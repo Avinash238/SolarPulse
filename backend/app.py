@@ -27,7 +27,7 @@ DEPLOYMENT_NAME = os.getenv("AZURE_OPENAI_DEPLOYMENT")
 # ----------------------
 # Store forecast in memory
 # ----------------------
-stored_forecast = None   # <--- important
+stored_forecast = None   
 
 
 # ----------------------
@@ -58,7 +58,7 @@ def forecast(days: int = 7):
     result["ds"] = result["ds"].astype(str)
     result["yhat"] = result["yhat"].astype(float)
 
-    stored_forecast = result.to_dict(orient="records")  # 🔥 Save forecast
+    stored_forecast = result.to_dict(orient="records")  
     return stored_forecast
 
 
@@ -122,7 +122,7 @@ Guidelines:
     # Fallback AI (no crash even if Azure is down)
     except Exception as e:
         fallback = (
-            f"⚠️ AI unavailable.\n\n"
+            f"AI unavailable.\n\n"
             f"Forecast summary:\n{forecast_summary}\n\n"
             f"You asked: {question}\n"
             f"General advice: clean panels, check shading, schedule heavy loads during peak hours."
