@@ -1,0 +1,9 @@
+pandas
+prophet
+fastapi
+uvicorn
+joblib
+streamlit
+plotly
+requests
+

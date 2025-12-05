@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+joblib
+pandas
+prophet
+python-dotenv
+openai>=1.40.0
