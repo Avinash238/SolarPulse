@@ -7,13 +7,13 @@ import plotly.express as px
 backend_url = "http://localhost:8000"
 
 st.set_page_config(page_title="Solar Forecast", layout="wide")
-st.title("🔆 Solar Power Forecasting Dashboard")
+st.title("Solar Power Forecasting Dashboard")
 
 
 # -----------------------------------------------------
 # FORECAST SECTION
 # -----------------------------------------------------
-st.subheader("📊 Forecast Generation")
+st.subheader("Forecast Generation")
 
 days = st.slider("Select forecast range (days):", 1, 90, 7)
 
@@ -32,7 +32,7 @@ with col_gen:
 
             st.success("Forecast generated successfully!")
         except Exception as e:
-            st.error("❌ Unable to connect to backend")
+            st.error("Unable to connect to backend")
             st.exception(e)
 
 # Reset Forecast Button (right side)
@@ -46,11 +46,11 @@ with col_reset:
 if "forecast_data" in st.session_state:
     forecast_df = st.session_state["forecast_data"]
 
-    st.subheader("📈 Solar Power Forecast Graph")
+    st.subheader("Solar Power Forecast Graph")
     fig = px.line(forecast_df, x="ds", y="yhat", title="Predicted Solar Power Output")
     st.plotly_chart(fig, use_container_width=True)
 
-    st.subheader("📄 Forecast Table (Last 10 Rows)")
+    st.subheader("Forecast Table (Last 10 Rows)")
     st.dataframe(forecast_df.tail(10))
 
 
@@ -58,7 +58,7 @@ if "forecast_data" in st.session_state:
 # CHAT SECTION
 # -----------------------------------------------------
 st.markdown("---")
-st.subheader("🤖 Chat With Solar AI Assistant")
+st.subheader("Chat With Solar AI Assistant")
 
 if "history" not in st.session_state:
     st.session_state.history = []
@@ -82,13 +82,13 @@ if st.button("Send"):
             st.session_state.history.append(("AI", ai_answer))
 
         except Exception as e:
-            st.error("❌ Couldn't reach backend for chat")
+            st.error("Couldn't reach backend for chat")
             st.exception(e)
 
 
 # Display Chat History
 for sender, msg in st.session_state.history:
     if sender == "You":
-        st.markdown(f"🧑 **You:** {msg}")
+        st.markdown(f"**You:** {msg}")
     else:
-        st.markdown(f"🤖 **AI:** {msg}")
+        st.markdown(f"**AI:** {msg}")
